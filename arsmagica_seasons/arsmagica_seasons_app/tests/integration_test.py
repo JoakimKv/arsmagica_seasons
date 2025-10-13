@@ -32,7 +32,7 @@ class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
         # Create fresh test user
         self.user = User.objects.using('testdb').create_user(
             username = self.username,
-            password = self.password
+            password = self.password,
             email = self.email
         )
 
