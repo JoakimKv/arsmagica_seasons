@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>Delete Account</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Delete Account</h2>
+  <p class="text-danger">
+  <h4>
+    You are about to delete user <strong>'{{ user_to_delete.username }}'</strong>.
+    This action cannot be undone.
+  </h4>
+  </p>
+  <hr>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="mb-3">
+      {{ form.password.label_tag }}
+      {{ form.password }}
+      {% if form.password.errors %}
+      <div class="text-danger">
+        {{ form.password.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    <a href="{% url 'manage_users' %}" class="btn-action cancel">Cancel</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <title>{% block title %}ArsMagica{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <header>
+    <a href="{% url 'index' %}">
+      <img src="{% static 'ArsMagica_Logo_18.png' %}" alt="Logo" class="arsmagica_logo">
+    </a>
+  </header>
+
+  <nav>
+    <h1><a href="{% url 'index' %}">ArsMagica</a></h1>
+    <ul>
+
+      {% if request.user.is_authenticated %}
+
+      <li><span>You are logged in as '{{ request.user.username }}'. </span></li>
+
+      {% if request.resolver_match.url_name != "change_password" %}
+      <li><a href="{% url 'change_password' %}">Change Password </a></li>
+      {% endif %}
+
+      {% if request.user.username == "joakim" %}
+      <li><a href="{% url 'manage_users' %}">Delete Users </a></li>
+      {% endif %}
+
+      <li><a href="{% url 'logout' %}">Log Out </a></li>
+
+      {% else %}
+
+      {% if request.resolver_match.url_name != "login" %}
+      <li><a href="{% url 'login' %}">Log In </a></li>
+      {% endif %}
+
+      {% if request.resolver_match.url_name != "register" %}
+      <li><a href="{% url 'register' %}">Register </a></li>
+      {% endif %}
+
+      {% endif %}
+
+    </ul>
+  </nav>
+
+  <section class="content">
+    <header>
+
+      {% block header %}
+      {% endblock %}
+
+    </header>
+  </section>
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+
+</html>

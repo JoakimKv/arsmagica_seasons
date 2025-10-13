@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+<h1>Seasonal Work</h1>
+
+{% if request.user.is_authenticated %}
+<nav class="seasonal-work-changes">
+  <div class="actions">
+    <a href="{% url 'seasonal_work_create' %}" class="btn-action add">Add New Seasonal Work</a>
+  </div>
+</nav>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% for work in works %}
+<article>
+  <header>
+    <h2>
+      {{ work.year }} ({{ work.season }}): Seasonal work for '{{ work.name }}': <br>
+    </h2>
+    <h4> {{ work.summary }} <br></h4>
+
+    <div class="about">
+      <h4>
+        Made by the user '{{ work.user.username }}' ({{ work.time_created|date:"Y-m-d" }}). <br>
+      </h4>
+    </div>
+
+    <nav class="seasonal-work-changes">
+      <div class="actions">
+        {% if request.user.is_authenticated and request.user == work.user %}
+        <a href="{% url 'update_seasonal_work' work.pk %}" class="btn-action">Update Seasonal Work</a>
+        <a href="{% url 'delete_seasonal_work' work.pk %}" class="btn-action danger">Delete Seasonal Work</a>
+        {% endif %}
+        <a href="{% url 'seasonal_work_detail' work.pk %}" class="btn-action">Show Seasonal Work Details</a>
+      </div>
+    </nav>
+
+  </header>
+</article>
+<hr>
+{% empty %}
+<p>No seasonal work entries yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Seasonal Work Detail</h2>
+  <hr>
+
+  <div class="card-mb-4">
+    <div class="card-body">
+      <h2 class="card-title">
+        {{ work.name }}
+        <small class="text-muted">({{ work.character_type }})</small>
+      </h2>
+      <p>
+      <h3>
+        <strong><i>Year</i>:</strong> {{ work.year }} <br> <br>
+        <strong><i>Season</i>:</strong> {{ work.season }} <br>
+      </h3>
+      </p>
+
+      <h3><i>Summary</i>:</h3>
+      <p>
+      <div class="seasonal-info-text">
+        <div class="seasonal-info-text">
+          <h3> {{ work.summary }} </h3>
+        </div>
+      </div>
+      </p>
+
+      <h3><i>Description</i>:</h3>
+      <p>
+      <div class="seasonal-info-text">
+        <div class="seasonal-info-text">
+          <h3> {{ work.description|linebreaks }} </h3>
+        </div>
+      </div>
+      <h4>
+        <strong><i>Created by</i>:</strong> {{ work.user.username }} <br>
+        <strong><i>Time Created</i>:</strong> {{ work.time_created|date:"Y-m-d H:i" }}
+      </h4>
+      </p>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+
+    <a href="{% url 'index' %}" class="btn-action cancel">Back to list</a>
+
+    {% if user == work.user %}
+    <a href="{% url 'update_seasonal_work' work.pk %}" class="btn-action cancel">Edit</a>
+    <a href="{% url 'delete_seasonal_work' work.pk %}" class="btn-action cancel">Delete</a>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

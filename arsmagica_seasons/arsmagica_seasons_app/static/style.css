@@ -1,0 +1,345 @@
+html {
+  font-family: sans-serif;
+  background: #faa541;
+  padding: 1rem;
+}
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #faa541;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: serif;
+  color: #377ba8;
+  margin: 1rem 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-left: 1.2rem;
+}
+
+a {
+  color: #377ba8;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+nav {
+  background: #faa541;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+nav h1 {
+  flex: auto;
+  margin: 0;
+}
+
+nav h1 a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a,
+nav ul li span,
+header .action {
+  display: block;
+  padding: 0.5rem;
+}
+
+.content {
+  padding: 0 1rem 1rem;
+}
+
+.content>header {
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: flex-end;
+}
+
+.content>header h1 {
+  flex: auto;
+  margin: 1rem 0 0.25rem 0;
+}
+
+.flash {
+  margin: 1em 0;
+  padding: 1em;
+  background: #cae6f6;
+  border: 1px solid #377ba8;
+}
+
+.post>header {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.85em;
+}
+
+.post>header>div:first-of-type {
+  flex: auto;
+}
+
+.post>header h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.post .about {
+  color: slategray;
+  font-style: italic;
+}
+
+.post .body {
+  white-space: pre-line;
+}
+
+.content:last-child {
+  margin-bottom: 0;
+}
+
+.content form {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content input,
+.content textarea {
+  margin-bottom: 1em;
+}
+
+.content textarea {
+  min-height: 12em;
+  resize: vertical;
+}
+
+input.danger {
+  color: #cc2f2e;
+}
+
+input[type=submit] {
+  align-self: start;
+  min-width: 10em;
+}
+
+.arsmagica_logo {
+  max-width: 960px;
+  height: auto;
+  display: block;
+  margin: 0.5rem auto;
+}
+
+/* ================================
+   Django Form Layout – Consistent Alignment
+   ================================ */
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 12em;
+  resize: vertical;
+}
+
+form {
+  padding-left: 1.2rem;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+@media (max-width: 860px) {
+
+  form input,
+  form select,
+  form textarea {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+form input[type="submit"],
+button[type="submit"],
+.btn-action {
+  width: auto;
+  display: inline-block;
+  min-width: 8rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* Seasonal Work Action Links. */
+
+.actions {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.actions a {
+  display: inline-block;
+  margin-right: 0.75rem;
+  /* spacing between links */
+  background: #fff;
+  color: #377ba8;
+  text-decoration: none;
+  /* remove underline */
+  border: 1px solid #377ba8;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.actions a:hover {
+  background: #377ba8;
+  color: white;
+  text-decoration: none;
+}
+
+.actions a.danger {
+  border-color: #cc2f2e;
+  color: #cc2f2e;
+}
+
+.actions a.danger:hover {
+  background: #cc2f2e;
+  color: white;
+}
+
+/* Generic button look for links. */
+
+.btn-action {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  background: #377ba8;
+  color: rgb(74, 8, 129);
+  border: 1px solid #377ba8;
+  transition: background 0.2s ease;
+}
+
+.btn-action:hover {
+  background: #788086;
+  color: rgb(147, 103, 103);
+}
+
+/* Red (danger) variant */
+.btn-action.danger {
+  background: #f9f6f6;
+  border-color: #d3bcbc;
+}
+
+.btn-action.danger:hover {
+  background: #d4c8c8;
+}
+
+/* Neutral "Cancel" variant */
+.btn-action.cancel {
+  background: #fefdfd;
+  border-color: #fbfafa;
+}
+
+.btn-action.cancel:hover {
+  background: #f7f6f6;
+}
+
+/* ===================== */
+/* Authentication forms  */
+/* (login / change password / register) */
+/* ===================== */
+
+.auth-form {
+  max-width: 400px;
+  margin: 2rem 0;
+  padding-left: 1.2rem;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.auth-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.auth-form input {
+  width: 100%;
+  max-width: 265px;
+  padding: 0.4rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-form .btn {
+  display: inline-block;
+  background: #377ba8;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.auth-form .btn:hover {
+  background: #2f6790;
+}

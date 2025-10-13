@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>Delete Seasonal Work</h1>
+{% endblock %}
+
+{% block content %}
+<p>
+<h2>
+  - Are you sure you want to <i>delete</i>:
+</h2>
+</p>
+<p>
+<h3>
+  <strong>{{ work.year }} ({{ work.season }}). Seasonal work for '{{ work.name }}': <br>
+  </strong> <br>"{{ work.summary }}"?
+</h3>
+</p>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete it" class="btn-action">
+  <a href="{% url 'index' %}" class="btn-action">Cancel</a>
+</form>
+{% endblock %}

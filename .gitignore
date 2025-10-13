@@ -1,0 +1,109 @@
+
+# .gitignore
+
+
+# ========================================
+# Python cache & bytecode
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ========================================
+# Virtual environments and secrets
+# ========================================
+.venvdjango1/
+venvdjango1/
+env/
+ENV/
+env.bak/
+venvdjango1.bak/
+secrets_for_django_project.txt
+
+# ========================================
+# Build / Packaging
+# ========================================
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+wheels/
+
+# ========================================
+# Logs & reports
+# ========================================
+*.log
+*.out
+*.err
+logs/
+debug.log
+
+# ========================================
+# Django files (MySQL only — no SQLite)
+# ========================================
+local_settings.py
+media/
+staticfiles/          # where collectstatic gathers final static assets
+static_root/
+*.pot
+*.mo
+
+# ========================================
+# Environment & Secrets
+# ========================================
+.env
+.django_env
+/etc/secrets/
+!.django_env.example
+*.key
+*.pem
+
+# ========================================
+# IDE & Editor junk
+# ========================================
+.vscode/
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
+
+# ========================================
+# Test / coverage / pytest
+# ========================================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+
+# ========================================
+# MyPy / Pyre / static analysis
+# ========================================
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# ========================================
+# Docs / Sphinx / MkDocs
+# ========================================
+docs/_build/
+site/
+
+# ========================================
+# Jupyter & IPython
+# ========================================
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ========================================
+# OS specific
+# ========================================
+.DS_Store
+Thumbs.db
