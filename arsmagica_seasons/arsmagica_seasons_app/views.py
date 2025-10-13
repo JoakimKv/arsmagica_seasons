@@ -63,8 +63,8 @@ class SeasonalWorkUpdateView(UpdateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        
-        return reverse_lazy("seasonal_work_detail", kwargs={"pk": self.object.pk})
+        # After a successful update, go back to the homepage
+        return reverse_lazy("index")
 
     def get_queryset(self):
         
