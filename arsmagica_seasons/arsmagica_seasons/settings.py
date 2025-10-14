@@ -89,7 +89,8 @@ DATABASES = {
         "USER": secretVault.getMySQLJKUsername(),
         "PASSWORD": secretVault.getMySQLJKPassword(),
         "HOST": secretVault.getMySQLHost(),
-        "PORT": secretVault.getMySQLPort()
+        "PORT": secretVault.getMySQLPort(),
+        "TEST": {"MIRROR": None}
     },
     "testdb": {
         "ENGINE": "django.db.backends.mysql",
@@ -97,7 +98,8 @@ DATABASES = {
         "USER": secretVault.getMySQLJKUsername(),
         "PASSWORD": secretVault.getMySQLJKPassword(),
         "HOST": secretVault.getMySQLHost(),
-        "PORT": secretVault.getMySQLPort()
+        "PORT": secretVault.getMySQLPort(),
+        "TEST": {"DEPENDENCIES": []}
     }
 }
 
