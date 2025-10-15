@@ -5,21 +5,25 @@
 
 {% block content %}
 <h2>Welcome</h2>
-<p>This page is made by <strong>Joakim Kvistholm</strong>. Choose a project below:</p>
+<p>
+<h3>This page is made by '<i>Joakim Kvistholm</i>' and in both projects a mysql database is used. Choose a project
+  below:
+</h3>
+</p>
 
 <div class="project-container">
   <div class="project">
     <a href="/blogs/">
-      <img src="{% static 'images/carvedrock.png' %}" alt="Carved Rock Logo" width="180">
+      <img src="{% static 'Carved Rock Logo 1.png' %}" alt="Carved Rock Logo" width="180">
     </a>
     <p><a href="/blogs/">Go to Carved Rock Blog</a></p>
   </div>
 
   <div class="project">
     <a href="/seasons/">
-      <img src="{% static 'images/arsmagica.png' %}" alt="Ars Magica Logo" width="180">
+      <img src="{% static 'ArsMagica_Logo_18.png' %}" alt="Ars Magica Logo" width="180">
     </a>
-    <p><a href="/seasons/">Go to Ars Magica Seasons</a></p>
+    <p><a href="{% url 'seasons:index' %}">Go to Ars Magica Seasons</a></p>
   </div>
 </div>
 {% endblock %}

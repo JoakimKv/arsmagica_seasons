@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Kvistholm.net{% endblock %}</title>
+  <title>{% block title %}Joakim Kvistholm's Start Page{% endblock %}</title>
 
   <!-- Use your shared style.css -->
   <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -14,9 +14,7 @@
 
 <body>
   <nav>
-    <h1><a href="/">Kvistholm.net</a></h1>
     <ul>
-      <li><a href="/">Home</a></li>
       <li><a href="/blogs/">Carved Rock Blog</a></li>
       <li><a href="/seasons/">Ars Magica Seasons</a></li>
     </ul>
@@ -28,9 +26,9 @@
     {% endblock %}
   </section>
 
-  <footer style="text-align:center; margin-top:2rem; font-size:0.9rem; color:#377ba8;">
+  <footer>
     <hr>
-    <p>&copy; 2025 Kvistholm.net — Built with Flask & Django</p>
+    <h3 class="footer-copyright">&copy; 2025 By Joakim Kvistholm: Built with Flask & Django. </h3>
   </footer>
 </body>
 
