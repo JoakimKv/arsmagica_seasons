@@ -22,11 +22,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from arsmagica_seasons_app import views as home_views
+from arsmagica_seasons_app import views
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", home_views.home, name = "home"),
+    path("", views.home, name = "home"),
     path("seasons/", include("arsmagica_seasons_app.urls"))
 ]

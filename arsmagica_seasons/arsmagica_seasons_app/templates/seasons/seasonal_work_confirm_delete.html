@@ -5,17 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<p>
 <h2>
   - Are you sure you want to <i>delete</i>:
 </h2>
-</p>
-<p>
 <h3>
   <strong>{{ work.year }} ({{ work.season }}). Seasonal work for '{{ work.name }}': <br>
   </strong> <br>"{{ work.summary }}"?
 </h3>
-</p>
 
 <form method="post">
   {% csrf_token %}

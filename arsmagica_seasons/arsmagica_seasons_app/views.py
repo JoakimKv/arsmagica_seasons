@@ -17,7 +17,6 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
-from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from .utils import backup_user_and_work
 
