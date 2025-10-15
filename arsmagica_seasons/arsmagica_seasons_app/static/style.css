@@ -343,3 +343,39 @@ button[type="submit"],
 .auth-form .btn:hover {
   background: #2f6790;
 }
+
+/* ======================================
+   Homepage Layout (shared)
+   ====================================== */
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.project {
+  text-align: center;
+}
+
+.project img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project a {
+  text-decoration: none;
+  color: #377ba8;
+  font-weight: bold;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}

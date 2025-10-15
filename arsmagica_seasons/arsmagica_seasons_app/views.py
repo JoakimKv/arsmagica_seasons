@@ -41,6 +41,12 @@ def logout_view(request):
     logout(request)
     return redirect("index")
 
+def home(request):
+
+    """Homepage view for Kvistholm.net."""
+
+    return render(request, "home/home.html")
+
 class SeasonalWorkUpdateView(UpdateView):
     
     model = SeasonalWork
@@ -63,7 +69,8 @@ class SeasonalWorkUpdateView(UpdateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        # After a successful update, go back to the homepage
+
+        # After a successful update, go back to the homepage.
         return reverse_lazy("index")
 
     def get_queryset(self):
