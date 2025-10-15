@@ -22,6 +22,12 @@
 
       <li><span>You are logged in as '{{ request.user.username }}'. </span></li>
 
+      {% endif %}
+
+      <li><a href="{% url 'home' %}">Back to Home Page</a></li>
+
+      {% if request.user.is_authenticated %}
+
       {% if request.resolver_match.url_name != "change_password" %}
       <li><a href="{% url 'change_password' %}">Change Password </a></li>
       {% endif %}
