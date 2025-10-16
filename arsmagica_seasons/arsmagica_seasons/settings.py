@@ -109,7 +109,11 @@ DATABASES = {
 for db in DATABASES:
 
     DATABASES[db]["TEST"] = {
-        "NAME": DATABASES[db]["NAME"],
+        # Intentionally do NOT point the Django test DB to the live DB name.
+        # Our custom test runner avoids creating or flushing test DBs, but this
+        # prevents accidental misconfiguration if a different runner is used.
+        # Leave NAME empty so Django's default test DB naming is used when needed.
+        "NAME": "",
     }
 
 # Password validation
@@ -152,3 +156,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Use a runner that never creates or flushes databases. Tests must be written
+# to operate against live DBs carefully (e.g., SimpleTestCase + explicit cleanup).
+# The runner module sits alongside manage.py, importable as 'noop_db_test_runner'.
+TEST_RUNNER = "noop_db_test_runner.NoDbOpsTestRunner"

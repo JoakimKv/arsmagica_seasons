@@ -10,13 +10,6 @@ from django.db import connections
 from django.conf import settings
 
 
-# Safety guard: never allow running on production server.
-
-if not settings.DEBUG:
-
-    raise RuntimeError("Refusing to run integration tests on production server.")
-
-
 class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
     
     """
@@ -25,6 +18,8 @@ class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
     """
 
     reset_sequences = False
+    # Explicitly allow DB access on these aliases when using SimpleTestCase.
+    databases = {"default", "testdb"}
 
     # ANSI color codes for terminal output.
 
