@@ -29,8 +29,12 @@
       {% endif %}
     </div>
 
-    <button type="submit" class="btn btn-danger">Confirm Delete</button>
-    <a href="{% url 'manage_users' %}" class="btn-action cancel">Cancel</a>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    </div>
+    <div class="mb-3">
+      <a href="{% url 'manage_users' %}" class="btn-action cancel">Cancel</a>
+    </div>
   </form>
 </div>
 {% endblock %}

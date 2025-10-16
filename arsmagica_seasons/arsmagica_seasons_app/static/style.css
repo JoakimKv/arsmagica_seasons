@@ -208,6 +208,7 @@ form {
 form input[type="submit"],
 button[type="submit"],
 .btn-action {
+  align-self: start;
   width: auto;
   display: inline-block;
   min-width: 8rem;
@@ -273,6 +274,13 @@ button[type="submit"],
   transition: background 0.2s ease;
 }
 
+.btn-action.cancel {
+  background: #fefdfd;
+  border-color: #fbfafa;
+  min-width: auto;
+  padding: 0.4rem 0.7rem !important;
+}
+
 .btn-action:hover {
   background: #788086;
   color: rgb(147, 103, 103);
@@ -288,15 +296,10 @@ button[type="submit"],
   background: #d4c8c8;
 }
 
-/* Neutral "Cancel" variant */
-.btn-action.cancel {
-  background: #fefdfd;
-  border-color: #fbfafa;
-}
-
 .btn-action.cancel:hover {
   background: #f7f6f6;
 }
+
 
 /* ===================== */
 /* Authentication forms  */

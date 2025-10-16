@@ -94,8 +94,7 @@ DATABASES = {
         "USER": secretVault.getMySQLJKUsername(),
         "PASSWORD": secretVault.getMySQLJKPassword(),
         "HOST": secretVault.getMySQLHost(),
-        "PORT": secretVault.getMySQLPort(),
-        "TEST": {"MIRROR": None}
+        "PORT": secretVault.getMySQLPort()
     },
     "testdb": {
         "ENGINE": "django.db.backends.mysql",
@@ -103,10 +102,15 @@ DATABASES = {
         "USER": secretVault.getMySQLJKUsername(),
         "PASSWORD": secretVault.getMySQLJKPassword(),
         "HOST": secretVault.getMySQLHost(),
-        "PORT": secretVault.getMySQLPort(),
-        "TEST": {"DEPENDENCIES": []}
+        "PORT": secretVault.getMySQLPort()
     }
 }
+
+for db in DATABASES:
+
+    DATABASES[db]["TEST"] = {
+        "NAME": DATABASES[db]["NAME"],
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

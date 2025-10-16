@@ -2,21 +2,28 @@
 # arsmagica_seasons_app/tests/integration_test.py
 
 
-from django.test import TransactionTestCase, Client
+from django.test import SimpleTestCase, Client
 from django.contrib.auth.models import User
 from arsmagica_seasons_app.models import SeasonalWork
 from django.urls import reverse
 from django.db import connections
+from django.conf import settings
 
 
-class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
+# Safety guard: never allow running on production server.
+
+if not settings.DEBUG:
+
+    raise RuntimeError("Refusing to run integration tests on production server.")
+
+
+class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
     
     """
     Full integration test using the real GPTHandler and real MySQL testdb.
     Verifies automatic and manual summary behavior end-to-end.
     """
 
-    databases = {"default", "testdb"}
     reset_sequences = False
 
     # ANSI color codes for terminal output.
@@ -55,8 +62,8 @@ class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
 
         # Clean up any leftover users or works.
 
-        User.objects.using("testdb").filter(username=self.username).delete()
-        User.objects.using("default").filter(username=self.username).delete()
+        User.objects.using("testdb").filter(username = self.username).delete()
+        User.objects.using("default").filter(username = self.username).delete()
 
         # Create user in both databases.
 
@@ -81,8 +88,7 @@ class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
     # to the test database.
 
     def _sync_default_to_testdb(self):
-        
-        
+           
         """Copy SeasonalWork rows for this user from default → testdb."""
 
         with connections["default"].cursor() as cursor_default, connections["testdb"].cursor() as cursor_test:
@@ -148,7 +154,7 @@ class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
         self.assertEqual(response.status_code, 302, "Form did not redirect after GPT summarization.")
 
         self._sync_default_to_testdb()
-        work = SeasonalWork.objects.using("testdb").filter(user=self.user_testdb).first()
+        work = SeasonalWork.objects.using("testdb").filter(user = self.user_testdb).first()
 
         self.assertIsNotNone(work, "Work not created in database.")
         self.assertTrue(len(work.summary.strip()) > 0, "GPT did not return a summary.")
@@ -261,18 +267,31 @@ class SeasonalWorkGPTRealIntegrationTest(TransactionTestCase):
             
             self.cprint(f"❌ Unauthorized user gained access to edit page! (status: {response.status_code}).", self.RED, fail = True)
 
-        # Cleanup intruder user.
-
-        User.objects.using("testdb").filter(username = intruder_username).delete()
-        User.objects.using("default").filter(username = intruder_username).delete()
-
         self.cprint(f"✅ Test 3 ... OK\n", self.GREEN)
 
+    # Override django's automatic cleanup process. 
+
+    @classmethod
+    def _cleanup_connections(cls):
+
+        """
+        Prevent Django from flushing our external databases after tests.
+        """
+
+        pass
 
     @classmethod
     def tearDownClass(cls):
         
         super().tearDownClass()
+
+        # Clean up all SeasonalWork entries for test users, but keep the test accounts themselves.
+
+        usernames_to_clean = ["test_user_gpt_real", "test_user_intruder"]
+
+        for db_alias in ["default", "testdb"]:
+           
+           SeasonalWork.objects.using(db_alias).filter(user__username__in = usernames_to_clean).delete()
 
         # Final summary printed once after all tests.
 
