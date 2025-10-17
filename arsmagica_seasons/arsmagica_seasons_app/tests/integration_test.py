@@ -222,17 +222,22 @@ class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
         intruder_password = "notallowed123"
         intruder_email = "intruder@hotmail.com"
 
-        intruder_default = User.objects.db_manager("default").create_user(
+        # Use get_or_create to be resilient when running with --keepdb.
+        intruder_default, _ = User.objects.db_manager("default").get_or_create(
             username = intruder_username,
-            password = intruder_password,
-            email = intruder_email
+            defaults = {"email": intruder_email}
         )
+        intruder_default.email = intruder_email
+        intruder_default.set_password(intruder_password)
+        intruder_default.save()
 
-        intruder_testdb = User.objects.db_manager("testdb").create_user(
+        intruder_testdb, _ = User.objects.db_manager("testdb").get_or_create(
             username = intruder_username,
-            password = intruder_password,
-            email = intruder_email
+            defaults = {"email": intruder_email}
         )
+        intruder_testdb.email = intruder_email
+        intruder_testdb.set_password(intruder_password)
+        intruder_testdb.save()
 
         # Login as the intruder.
 
