@@ -49,7 +49,7 @@ Tables include:
 
 On windows 11 (and an ubuntu server):
 
-- Install nginx and get the certificate for https (for your hostname). Use my 'blogs_seasons.conf' (on ubuntu server in '/etc/nginx/sites-available' and in this project in 'nginx' folder). This is the final version of this file 'after' the certificate is issued and you need to adapt it to your own server. The 'blogs_and_seasons_temp.conf' is the 'blogs_seasons.conf' file before you retrieve your needed certificate and it may need to be adapted to your own server. Note that for the Flask and Django project 'blogs_seasons.conf' is the same file that is stored on the ubuntu server.
+- Install nginx and get the certificate for https (for your hostname). Use my 'blogs_seasons.conf' (on ubuntu server in '/etc/nginx/sites-available' and in this project in 'nginx' folder). This is the final version of this '.conf' file 'after' the certificate is issued and you need to adapt it to your own server. The 'blogs_and_seasons_temp.conf' is the 'blogs_seasons.conf' file before you retrieve your needed certificate and it may need to be adapted to your own server. Note that for the Flask and Django project 'blogs_seasons.conf' is the same file that is stored on the ubuntu server.
 
 - To start the virtual environment: python -m venv venvdjango1
 
