@@ -10,7 +10,8 @@ This project has been adapted and extended from the Flask project for further de
 ## Features  
 
 - User authentication with hashed passwords.  
-- Seasonal work posts with authors, timestamps, summary and description.  
+- Seasonal work posts with users, timestamps, summary and description.
+- The summary from the description is made by openai's ChatGPT if it is left out.  
 - Relational database schema with proper foreign keys.  
 - Django database migrations.  
 - Configurable database connection via `DatabaseConnectionData`.  
