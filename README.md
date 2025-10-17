@@ -67,15 +67,12 @@ On windows 11 (and an ubuntu server):
 
 - Then write the following in a web browser: localhost:8000 or your own "server adress".
 
-- The django app is running in a docker and the endpoint 'blogs/' by my other program in a containarized Flask app. The nginx and the mysql database is run on a ubuntu server, they are not dockerized and are run with services on the ubuntu server. The file 'blogs_seasons.conf' is needed to configure the different ports that are used to run the programs (the containarized apps: the 'Django app' and the 'Flask app').
+- The django app is running in a docker and the endpoint 'blogs/' by my other program in a containarized Flask app. The nginx and the mysql database is run on a Ubuntu server, they are not dockerized and are run with services on the Ubuntu server. The file 'blogs_seasons.conf' is needed to configure the different ports that are used to run the programs (the containarized apps: the 'Django app' and the 'Flask app').
 
 ## Environmental variables and secrets
 
-There are two environmental variables which are recommended to be set on the Ubunbtu server:
-- MYSQL_GIT_JK_USERNAME and MYSQL_GIT_JK_PASSWORD which is your username and password for the none root user for mysql.
-
 These secrets in your repository must be set (stored in your github repository):
-- The secrets in 'deploy.yml' (where 'secrets.' has been added to the code): secrets.SERVER_IP (Ubuntu server ip), secrets.SERVER_ROOT_USERNAME (the username for root, often root) and secrets.SSH_PRIVATE_KEY (your ssh key to connect to the server). They are stored in '.django_env', see '.django_env.example', for how it can look. The 'SecretVault' class (in the file 'secret_vault_class.py') handles these secrets.
+- The secrets in 'deploy.yml' (where 'secrets.' has been added to the code): secrets.SERVER_IP (Ubuntu server ip), secrets.SERVER_ROOT_USERNAME (the username for root, often root) and secrets.SSH_PRIVATE_KEY (your ssh key to connect to the server). They are stored in '.django_env', see '.django_env.example', for how it can look. The 'SecretVault' class (in the file 'secret_vault_class.py') handles these secrets. On the Ubuntu server they are stored in '/etc/secrets/mysql/keys/.django_env'.
 
 ## Running pytests
 
@@ -83,7 +80,7 @@ The following Django tests can be run (in 'arsmagica_seasons' folder):
 
 - python manage.py test arsmagica_seasons_app.tests.integration_test --keepdb --verbosity=2
 
-- The file 'integration_test.py'
+- The file 'integration_test.py' contains the tests to be run on the mysql databases on your local windows machine and not on your Ubuntu server.
 
 ## Author
 
