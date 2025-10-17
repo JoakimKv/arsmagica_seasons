@@ -15,15 +15,17 @@
 <body>
   <nav>
     <ul>
-      <li><a href="/blogs/">Carved Rock Blog</a></li>
+      <li><a href="{{ BLOGS_URL }}">Carved Rock Blog</a></li>
       <li><a href="/seasons/">Ars Magica Seasons</a></li>
     </ul>
   </nav>
 
   <section class="content">
+
     {% block content %}
-    <!-- home.html will inject its main content here -->
+
     {% endblock %}
+
   </section>
 
   <footer>

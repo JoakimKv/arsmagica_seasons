@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 
 from pathlib import Path
+from django.conf import settings
 from .secret_vault_class import SecretVault
 
 
@@ -76,6 +77,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "arsmagica_seasons_app.context_processors.blogs_url"
             ],
         },
     },
@@ -161,3 +163,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # to operate against live DBs carefully (e.g., SimpleTestCase + explicit cleanup).
 # The runner module sits alongside manage.py, importable as 'noop_db_test_runner'.
 TEST_RUNNER = "noop_db_test_runner.NoDbOpsTestRunner"
+
+BLOGS_URL = "https://kvistholm.net/blogs/" if not settings.DEBUG else "http://localhost:5000/blogs/"
