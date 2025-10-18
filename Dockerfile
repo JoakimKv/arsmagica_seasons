@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /arsmagica_seasons_docker
+WORKDIR /arsmagica_seasons_docker/arsmagica_seasons
 
 # Copy dependency list first for caching
 COPY requirements.txt .
