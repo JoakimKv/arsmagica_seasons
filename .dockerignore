@@ -44,3 +44,4 @@ Thumbs.db
 .django_env
 .env
 /etc/secrets/
+secrets_for_django_project.txt
