@@ -1,7 +1,7 @@
 
 # pip_install_info.txt
 
-(python.exe -m pip install --upgrade pip)
+(python -m pip install --upgrade pip)
 
 python –m pip install django
 
@@ -9,9 +9,10 @@ python –m pip install django
 (python manage.py runserver)
 (python manage.py startapp arsmagica_seasons_app)
 
-pip install mysqlclient
-pip install python-dotenv
-pip install openai==0.28.0
+python -m pip install mysqlclient
+python -m pip install python-dotenv
+python -m pip install openai==0.28.0
+python -m pip install gunicorn
 
 (python manage.py migrate)
 (python manage.py createsuperuser)
