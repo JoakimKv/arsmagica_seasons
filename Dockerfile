@@ -28,5 +28,5 @@ COPY . .
 EXPOSE 8000
 
 # Run Django using Gunicorn with WSGI entrypoint
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "arsmagica_seasons.wsgi:application"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "arsmagica_seasons.arsmagica_seasons.wsgi:application"]
 
