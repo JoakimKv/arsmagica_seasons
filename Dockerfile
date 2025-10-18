@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /django_arsmagica_seasons_docker
+WORKDIR /arsmagica_seasons_docker
 
 # Copy dependency list first for caching
 COPY requirements.txt .
