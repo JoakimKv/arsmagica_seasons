@@ -15,6 +15,9 @@ services:
     env_file:
       - /etc/secrets/mysql/keys/.django_env
 
+    volumes:
+      - /etc/secrets/mysql/keys/.django_env:/etc/secrets/mysql/keys/.django_env:ro
+
     # Add host-to-container network mapping so Django can reach MySQL running on the server
     extra_hosts:
       - "host.docker.internal:host-gateway"
