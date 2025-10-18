@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /arsmagica_seasons_docker/arsmagica_seasons
+WORKDIR /arsmagica_seasons_docker
 
 # Copy dependency list first for caching
 COPY requirements.txt .
@@ -26,6 +26,8 @@ COPY . .
 
 # Expose port for Gunicorn
 EXPOSE 8000
+
+ENV PYTHONPATH=/arsmagica_seasons_docker/arsmagica_seasons
 
 # Run Django using Gunicorn with WSGI entrypoint
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "arsmagica_seasons.arsmagica_seasons.wsgi:application"]
