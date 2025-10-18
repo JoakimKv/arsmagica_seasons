@@ -1,7 +1,7 @@
 
 services:
   django_app:
-    container_name: django_arsmagica_seasons
+    container_name: arsmagica_seasons
     build:
       context: .
       dockerfile: Dockerfile
