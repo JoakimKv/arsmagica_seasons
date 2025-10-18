@@ -1,0 +1,46 @@
+
+# Ignore Python cache and compiled files.
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments.
+
+venvdjango1/
+.venvdjango1/
+env/
+ENV/
+env.bak/
+venvdjango1.bak/
+
+# Ignore Git and editor files.
+
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Ignore local logs and build junk.
+
+*.log
+logs/
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+wheels/
+
+# Ignore OS junk.
+
+.DS_Store
+Thumbs.db
+
+# Ignore secrets and env files.
+
+.django_env
+.env
+/etc/secrets/
