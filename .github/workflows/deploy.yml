@@ -69,7 +69,6 @@ jobs:
             docker compose down
             docker compose --env-file /etc/secrets/mysql/keys/.django_env up -d --build django_app
 
-            # Reload Nginx if config changed.
-
+            nginx -t
             systemctl daemon-reload
             systemctl reload nginx
