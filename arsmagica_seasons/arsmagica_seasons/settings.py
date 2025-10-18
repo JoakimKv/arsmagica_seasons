@@ -65,7 +65,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "arsmagica_seasons.urls"
+ROOT_URLCONF = "arsmagica_seasons.arsmagica_seasons.urls"
 
 TEMPLATES = [
     {
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "arsmagica_seasons.wsgi.application"
+WSGI_APPLICATION = "arsmagica_seasons.arsmagica_seasons.wsgi.application"
 
 
 # Database
