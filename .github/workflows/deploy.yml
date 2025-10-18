@@ -21,33 +21,40 @@ jobs:
           script: |
 
             # Ensure MySQL is running.
+
             systemctl enable mysql
             systemctl start mysql
 
             # Remove old project if exists.
+
             cd /srv
 
-            if [ -d "django_arsmagica_seasons" ]; then
-              rm -rf /srv/arsmagica_seasons
+            if [ -d "arsmagica_seasons" ]; then
+
+               # Check if inside a virtual environment.
+
+               cd /srv/arsmagica_seasons
+
+               if [ -n "$VIRTUAL_ENV" ]; then
+                   echo "Deactivating existing virtual environment: $VIRTUAL_ENV"
+                  deactivate
+               fi
+
+               rm -rf /srv/arsmagica_seasons
+
             fi
 
             # Clone repo fresh.
-             git clone git@github.com:JoakimKV/arsmagica_seasons.git /srv/arsmagica_seasons
+
+            git clone git@github.com:JoakimKV/arsmagica_seasons.git /srv/arsmagica_seasons
 
             # Copy secrets from another .env file (.django_env) into the .env file (.django_env) 
             # in the project.
-            cp /etc/secrets/mysql/keys/.django_env /srv/arsmagica_seasons/.django_env
 
-            cd /srv/arsmagica_seasons
+            cp /etc/secrets/mysql/keys/.django_env /srv/arsmagica_seasons/.django_env
 
             # Install Python dependencies.
  
-            # Check if inside a virtual environment.
-            if [ -n "$VIRTUAL_ENV" ]; then
-              echo "Deactivating existing virtual environment: $VIRTUAL_ENV"
-              deactivate
-            fi
-
             cd /srv/arsmagica_seasons
 
             python -m venv venvdjango1
@@ -56,9 +63,11 @@ jobs:
             python -m pip install -r requirements.txt
 
             # Restart Docker app container (Django only).
+
             docker compose down
             docker compose --env-file /etc/secrets/mysql/keys/.django_env up -d --build app
 
             # Reload Nginx if config changed.
+            
             systemctl daemon-reload
             systemctl reload nginx
