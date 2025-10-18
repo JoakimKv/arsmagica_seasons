@@ -9,7 +9,7 @@ services:
 
     # Port mapping — expose Django (Gunicorn) on port 8000
     ports:
-      - "8000:8000"
+      - "9000:8000"
 
     # Load secrets from host system
     env_file:
