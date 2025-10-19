@@ -27,8 +27,6 @@ COPY . .
 # Expose port for Gunicorn
 EXPOSE 8000
 
-ENV PYTHONPATH=/arsmagica_seasons_docker/arsmagica_seasons
-
 # Run Django using Gunicorn with WSGI entrypoint
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "arsmagica_seasons.arsmagica_seasons.wsgi:application"]
 
