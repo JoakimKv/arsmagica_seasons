@@ -8,5 +8,5 @@ MYSQL_BLOGS_DISABLE_SSL=1
 OPENAI_API_KEY=sk-...(your openai key)
 SECRET_KEY_SEASONS=...(your_own_key)
 SECRET_KEY=django-insecure-...
-DJANGO_SETTINGS_MODULE=arsmagica_seasons.arsmagica_seasons.settings
+DJANGO_SETTINGS_MODULE=arsmagica_seasons.settings
 
