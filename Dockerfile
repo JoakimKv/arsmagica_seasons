@@ -27,6 +27,7 @@ COPY . .
 # Expose port for Gunicorn
 EXPOSE 8000
 
-# Run Django using Gunicorn with WSGI entrypoint
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "arsmagica_seasons.wsgi:application"]
+# Run Django via Gunicorn. Change into project dir so Python can import
+# the inner package (arsmagica_seasons/arsmagica_seasons/wsgi.py).
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "--chdir", "arsmagica_seasons", "arsmagica_seasons.wsgi:application"]
 
