@@ -19,7 +19,8 @@ COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir whitenoise==6.8.2
 
 # Copy full source
 COPY . .
@@ -27,7 +28,10 @@ COPY . .
 # Expose port for Gunicorn
 EXPOSE 8000
 
-# Run Django via Gunicorn. Change into project dir so Python can import
-# the inner package (arsmagica_seasons/arsmagica_seasons/wsgi.py).
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "--chdir", "arsmagica_seasons", "arsmagica_seasons.wsgi:application"]
+# Copy entrypoint and make executable
+COPY docker-entrypoint.sh ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
+
+# Run entrypoint (collectstatic + gunicorn)
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
