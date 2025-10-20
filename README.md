@@ -14,13 +14,13 @@ This project has been adapted and extended from the Flask project for further de
 - The summary from the description is made by openai's ChatGPT if it is left out.  
 - Relational database schema with proper foreign keys.  
 - Django database migrations.  
-- Configurable database connection via `DatabaseConnectionData`.  
+- Configurable database connection via `SecretVault` class.  
 - Uses Django tests that tests towards 'real' mysql databases.  
 - Structured project layout for maintainability.  
 
 ## Extra Information
 
-All users can create a password that has at least 8 letters. Two superusers admin and another name should be created, see 'pip_install_info.txt'. At least one more users will be a good addition to the superusers, but you can easily create them with the web page.It is recommended to look at 'pip_install_info.txt' here is a lot of important information and useful commands if you want to use the project.
+All users can create a password that has at least 8 letters. Two superusers: 'admin' and 'joakim' should be created, see 'pip_install_info.txt'. At least one more users will be a good addition to the superusers, but you can easily create them with the web page. It is recommended to look at 'pip_install_info.txt' here is a lot of important information and useful commands if you want to use the project.
 
 ## Project Structure  
 
@@ -49,7 +49,7 @@ Tables include:
 
 On windows 11 (and an ubuntu server):
 
-- Install nginx and get the certificate for https (for your hostname). Use my 'blogs_seasons.conf' (on ubuntu server in '/etc/nginx/sites-available' and in this project in 'nginx' folder). This is the final version of this '.conf' file 'after' the certificate is issued and you need to adapt it to your own server. The 'blogs_and_seasons_temp.conf' is the 'blogs_seasons.conf' file before you retrieve your needed certificate and it may need to be adapted to your own server. Note that for the Flask and Django project 'blogs_seasons.conf' is the same file that is stored on the ubuntu server.
+- Install nginx and get the certificate for https (for your hostname). Use my 'blogs_seasons.conf' (on ubuntu server in '/etc/nginx/sites-available' and in this project in 'nginx' folder). This is the final version of this '.conf' file 'after' the certificate is issued and you need to adapt it to your own server. The 'blogs_and_seasons_temp.conf' is the 'blogs_seasons.conf' file before you retrieve your needed certificate and it may need to be adapted to your own server. Note that for the 'Flask' and 'Django' project 'blogs_seasons.conf' is the same file that is stored on the ubuntu server.
 
 - To start the virtual environment: python -m venv venvdjango1
 
@@ -67,7 +67,7 @@ On windows 11 (and an ubuntu server):
 
 - Then write the following in a web browser: localhost:8000 or your own "server adress".
 
-- The django app is running in a docker and the endpoint 'blogs/' by my other program in a containarized Flask app. The nginx and the mysql database is run on a Ubuntu server, they are not dockerized and are run with services on the Ubuntu server. The file 'blogs_seasons.conf' is needed to configure the different ports that are used to run the programs (the containarized apps: the 'Django app' and the 'Flask app').
+- The django app is running in a docker and the endpoint 'blogs/' by my other program in a containarized Flask app. The nginx and the mysql database is run on a Ubuntu server, they are not dockerized and are run with services on the Ubuntu server. The file 'blogs_seasons.conf' with the use of nginx is needed to configure the different ports that are used to run the programs (the containarized apps: the 'Django app' and the 'Flask app').
 
 ## Databases and '.sql' scripts
 
@@ -86,7 +86,7 @@ The following Django tests can be run (in 'arsmagica_seasons' folder):
 
 - python manage.py test arsmagica_seasons_app.tests.integration_test --keepdb --verbosity=2
 
-- The file 'integration_test.py' contains the tests to be run on the mysql databases on your local windows machine and not on your Ubuntu server.
+- The file 'integration_test.py' contains the tests to be run on the mysql databases on your local windows machine and not on your Ubuntu server. The tests should not be run on the ubuntu server as not to effect your real production database and if the test works on your local windows machine they will work on the ubuntu server, since they are using the same authorizations and the same endpoints.
 
 ## Author
 
