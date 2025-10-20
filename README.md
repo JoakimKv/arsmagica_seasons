@@ -20,7 +20,7 @@ This project has been adapted and extended from the Flask project for further de
 
 ## Extra Information
 
-All users can create a password that has at least 8 letters. Two superusers: 'admin' and 'joakim' should be created, see 'pip_install_info.txt'. At least one more user will be a good addition to the superusers, but you can easily create them with the web page. It is recommended to look at 'pip_install_info.txt' here is a lot of important information and useful commands if you want to use the project. Remember that for superusers you kan use the admin page, since may domain is 'kvistholm.net' at the time of creating this project the admin page can be reached by 'kvistholm.net/admin' or something similar if you use your domain name.
+All users can create a password that has at least 8 letters. Two superusers: 'admin' and 'joakim' should be created, see 'pip_install_info.txt'. At least one more user will be a good addition to the superusers, but you can easily create them with the web page. It is recommended to look at 'pip_install_info.txt' here is a lot of important information and useful commands if you want to use the project. Remember that for superusers you kan use the admin page, since my domain is 'kvistholm.net' at the time of creating this project the admin page can be reached by 'kvistholm.net/admin' or something similar if you use your domain name.
 
 ## Project Structure  
 
