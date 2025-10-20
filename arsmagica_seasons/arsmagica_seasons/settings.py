@@ -61,7 +61,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -163,8 +162,19 @@ STATIC_URL = "/static/"
 # Where collectstatic will place files in production
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Enable efficient static file serving with hashing and compression
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+###
+## Enable WhiteNoise in production (Linux server only)
+## Avoid requiring it for local Windows development and tests.
+###
+try:
+    if secretVault.getIsOnServer():
+        # Insert right after SecurityMiddleware
+        MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+        # Use hashed + compressed static files when collected
+        STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+except Exception:
+    # If anything goes wrong determining environment, keep local-friendly defaults
+    pass
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
