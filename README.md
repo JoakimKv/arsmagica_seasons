@@ -69,6 +69,12 @@ On windows 11 (and an ubuntu server):
 
 - The django app is running in a docker and the endpoint 'blogs/' by my other program in a containarized Flask app. The nginx and the mysql database is run on a Ubuntu server, they are not dockerized and are run with services on the Ubuntu server. The file 'blogs_seasons.conf' is needed to configure the different ports that are used to run the programs (the containarized apps: the 'Django app' and the 'Flask app').
 
+## Databases and '.sql' scripts
+
+- In the folder 'heidisql' I have two '.sql' scripts: 'db_arsmagica1_start.sql' (for the database 'db_arsmagica1') and 'db_arsmagica1_test_start.sql' (for the database 'db_arsmagica1_test'). These scripts are used to create the initial tables and populate them with data in the corresponding database (works for the test and production database for your local computer and for your server). Run the .sql script in the corresponding database as an query (past in the text (in a query) from the corresponding script which you can find in the heidisql folder).
+
+- You will need to change the password (or delete and create the users again) by using HeidiSQL or a similar program for the superusers 'admin' and 'joakim' (you will also need to change the password for 'kalle' and / or remove him with his data by logging in as superuser 'joakim'). You will need to keep the superuser 'joakim' since he exists in many places in the code. Do not change the passwords for the test users (and do not delete the following test users): 'test_user_intruder' and 'test_user_gpt_real'. Their passwords are set in the code and should not be changed and you should not delete these users if you want to be able to run the tests in this project on your local machine.
+
 ## Environmental variables and secrets
 
 These secrets in your repository must be set (stored in your github repository):
