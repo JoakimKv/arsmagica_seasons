@@ -42,6 +42,10 @@ ALLOWED_HOSTS = [
     "www.kvistholm.net"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://kvistholm.net",
+    "https://www.kvistholm.net",
+]
 
 # Application definition
 
