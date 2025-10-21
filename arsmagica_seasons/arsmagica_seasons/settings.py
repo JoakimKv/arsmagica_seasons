@@ -40,15 +40,11 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "kvistholm.net",
     "www.kvistholm.net",
-    "kvistholm.net/blogs",
-    "www.kvistholm.net/blogs",    
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://kvistholm.net",
     "https://www.kvistholm.net",
-    "https://kvistholm.net/blogs",
-    "https://www.kvistholm.net/blogs",
 ]
 
 # Application definition
