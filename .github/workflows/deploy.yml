@@ -74,3 +74,5 @@ jobs:
             nginx -t
             systemctl daemon-reload
             systemctl reload nginx
+
+            deactivate
