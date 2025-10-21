@@ -16,7 +16,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 
 from pathlib import Path
-from django.conf import settings
 from .secret_vault_class import SecretVault
 
 
@@ -33,7 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = secretVault.getSecretKey()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Drive DEBUG from environment/platform via SecretVault
+DEBUG = secretVault.getDebugMode()
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -186,4 +186,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # The runner module sits alongside manage.py, importable as 'noop_db_test_runner'.
 TEST_RUNNER = "noop_db_test_runner.NoDbOpsTestRunner"
 
-BLOGS_URL = "https://kvistholm.net/blogs/" if not settings.DEBUG else "http://localhost:5000/blogs/"
+BLOGS_URL = "https://kvistholm.net/blogs/" if not DEBUG else "http://localhost:5000/blogs/"
