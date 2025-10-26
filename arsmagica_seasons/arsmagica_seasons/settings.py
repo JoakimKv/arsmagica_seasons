@@ -63,6 +63,20 @@ INSTALLED_APPS = [
     "arsmagica_seasons_app"
 ]
 
+
+# Add Debug Toolbar locally only.
+
+try:
+
+    if not secretVault.getIsOnServer():
+
+        INSTALLED_APPS.append("debug_toolbar")
+
+except Exception:
+
+    pass
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -72,6 +86,20 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+
+# Add Debug Toolbar locally only.
+
+try:
+
+    if not secretVault.getIsOnServer():
+
+        MIDDLEWARE.insert(2, "debug_toolbar.middleware.DebugToolbarMiddleware")
+
+except Exception:
+
+    pass
+
 
 ROOT_URLCONF = "arsmagica_seasons.urls"
 
@@ -181,13 +209,18 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 ## Avoid requiring it for local Windows development and tests.
 ###
 try:
+
     if secretVault.getIsOnServer():
-        # Insert right after SecurityMiddleware
+
+        # Insert right after SecurityMiddleware.
         MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-        # Use hashed + compressed static files when collected
+
+        # Use hashed + compressed static files when collected.
         STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 except Exception:
-    # If anything goes wrong determining environment, keep local-friendly defaults
+
+    # If anything goes wrong determining environment, keep local-friendly defaults.
     pass
 
 # Default primary key field type
@@ -201,3 +234,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEST_RUNNER = "noop_db_test_runner.NoDbOpsTestRunner"
 
 BLOGS_URL = "https://kvistholm.net/blogs/" if not DEBUG else "http://localhost:5000/blogs/"
+
+# Allow Debug Toolbar only on local dev machine.
+
+try:
+
+    if not secretVault.getIsOnServer():
+
+        INTERNAL_IPS = [
+            "127.0.0.1",
+            "localhost",
+        ]
+
+except Exception:
+    
+    pass

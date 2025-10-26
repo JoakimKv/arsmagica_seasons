@@ -23,6 +23,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from arsmagica_seasons_app import views
+from django.conf import settings
+import debug_toolbar
 
 
 urlpatterns = [
@@ -30,3 +32,11 @@ urlpatterns = [
     path("", views.home, name = "home"),
     path("seasons/", include("arsmagica_seasons_app.urls"))
 ]
+
+# Add debug toolbar in debug mode when on windows machine.
+
+if settings.DEBUG:
+
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ] + urlpatterns
