@@ -5,7 +5,7 @@ A **Django web application** that demonstrates clean application structure, data
 
 This project has been adapted and extended to work with my Flask project for further development by **Joakim Kvistholm** to work with a 'real' mysql database and to make seasonal work easier for ArsMagica. In this project I use a mysql server for both the test and production database which are running by docker on my windows machine and I am using HeidiSQL as an extra database handler. On the Ubuntu server mysql is running as a service and is not dockerized. All of this brings the project closer to a production-ready web application, deployed with a real MySQL server.  
 
-This project uses **GitHub Actions** for automated deployment to my Ubuntu production server. Whenever new code is pushed to the `main` branch, the workflow defined in `.github/workflows/deploy.yml` runs automatically and updates my server with this code.
+This project uses **GitHub Actions** for automated deployment to my Ubuntu production server. Whenever new code is pushed to the `main` branch, the workflow defined in `.github/workflows/deploy.yml` runs automatically and updates my server with this new code.
 
 ---
 
