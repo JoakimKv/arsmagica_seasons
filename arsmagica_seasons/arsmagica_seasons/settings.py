@@ -89,6 +89,16 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            # The environment function lives at the project root as jinja2_environment.py
+            # Use the correct dotted path so Django can import it.
+            "environment": "jinja2_environment.environment",
+        },
+    },
 ]
 
 WSGI_APPLICATION = "arsmagica_seasons.wsgi.application"
