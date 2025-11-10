@@ -185,10 +185,6 @@ try:
             }
         }
 
-        # Optional: use cache-backed sessions for performance.
-        SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-        SESSION_CACHE_ALIAS = "default"
-
     else:
 
         # Local Windows development configuration.
