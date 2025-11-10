@@ -181,7 +181,7 @@ try:
                     "use_pooling": True,
                     "max_pool_size": 10,
                 },
-                "TIMEOUT": 300,  # seconds (5 minutes).
+                "TIMEOUT": 300,  # Seconds (5 minutes).
             }
         }
 
