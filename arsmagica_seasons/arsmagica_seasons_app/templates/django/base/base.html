@@ -15,7 +15,7 @@
   </header>
 
   <nav>
-    <h1><a href="{% url 'index' %}">ArsMagica</a></h1>
+
     <ul>
 
       {% if request.user.is_authenticated %}
@@ -24,16 +24,26 @@
 
       {% endif %}
 
+      {% if request.resolver_match.url_name != "index" %}
+
+      <li><a href="{% url 'index' %}">ArsMagica</a></li>
+
+      {% endif %}
+
       <li><a href="{% url 'home' %}">Back to Start Page</a></li>
 
       {% if request.user.is_authenticated %}
 
       {% if request.resolver_match.url_name != "change_password" %}
+
       <li><a href="{% url 'change_password' %}">Change Password </a></li>
+
       {% endif %}
 
       {% if request.user.username == "joakim" %}
+
       <li><a href="{% url 'manage_users' %}">Delete Users </a></li>
+
       {% endif %}
 
       <li><a href="{% url 'logout' %}">Log Out </a></li>
@@ -41,19 +51,25 @@
       {% else %}
 
       {% if request.resolver_match.url_name != "login" %}
+
       <li><a href="{% url 'login' %}">Log In </a></li>
+
       {% endif %}
 
       {% if request.resolver_match.url_name != "register" %}
+
       <li><a href="{% url 'register' %}">Register </a></li>
+
       {% endif %}
 
       {% endif %}
 
     </ul>
+
   </nav>
 
   <section class="content">
+
     <header>
 
       {% block header %}
