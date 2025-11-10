@@ -106,7 +106,12 @@ ROOT_URLCONF = "arsmagica_seasons.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [
+            # Treat the app's Django templates subfolder as a root so
+            # template names like "home/home.html" resolve correctly.
+            BASE_DIR / "arsmagica_seasons_app" / "templates" / "django",
+            BASE_DIR / "arsmagica_seasons_app" / "templates"
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -119,7 +124,7 @@ TEMPLATES = [
     },
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates" / "jinja2"],
         "APP_DIRS": True,
         "OPTIONS": {
             # The environment function lives at the project root as jinja2_environment.py
