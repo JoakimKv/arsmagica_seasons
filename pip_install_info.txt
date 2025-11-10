@@ -15,6 +15,7 @@ python -m pip install openai==0.28.0
 python -m pip install gunicorn
 python -m pip install Jinja2
 python -m pip install django-debug-toolbar
+python -m pip install pymemcache
 
 (python manage.py migrate)
 (python manage.py createsuperuser)

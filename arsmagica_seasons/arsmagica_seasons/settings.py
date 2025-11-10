@@ -164,6 +164,53 @@ for db in DATABASES:
         "NAME": "",
     }
 
+# ------------------------------------------------------------------------------
+# CACHING CONFIGURATION (Memcached via pymemcache).
+# ------------------------------------------------------------------------------
+
+try:
+
+    if secretVault.getIsOnServer():
+
+        # Ubuntu production server configuration.
+        CACHES = {
+            "default": {
+                "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+                "LOCATION": "127.0.0.1:11211",
+                "OPTIONS": {
+                    "use_pooling": True,
+                    "max_pool_size": 10,
+                },
+                "TIMEOUT": 300,  # seconds (5 minutes).
+            }
+        }
+
+        # Optional: use cache-backed sessions for performance.
+        SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+        SESSION_CACHE_ALIAS = "default"
+
+    else:
+
+        # Local Windows development configuration.
+        CACHES = {
+            "default": {
+                "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+                "LOCATION": "127.0.0.1:11211",
+                "TIMEOUT": 60,  # Shorter cache time for local debugging.
+            }
+        }
+
+except Exception as e:
+
+    # Fallback to local-memory cache if pymemcache or memcached not available.
+    print(f"[Cache Warning] Falling back to LocalMemoryCache: {e}")
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        }
+    }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
