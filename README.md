@@ -53,6 +53,8 @@ On windows 11 (and an ubuntu server):
 
 - Install nginx and get the certificate for https (for your hostname). Use my 'blogs_seasons.conf' (on ubuntu server in '/etc/nginx/sites-available' and in this project in 'nginx' folder). This is the final version of this '.conf' file 'after' the certificate is issued and you need to adapt it to your own server. The 'blogs_and_seasons_temp.conf' is the 'blogs_seasons.conf' file before you retrieve your needed certificate and it may need to be adapted to your own server. Note that for the 'Flask' and 'Django' project 'blogs_seasons.conf' is the same file that is stored on the ubuntu server.
 
+- The python package 'pymemcache' is already set in 'requirements.txt' and is used to cache various results on some of the dynamic web pages. On the ubuntu server you need to make the following installation steps to use 'memcached': ["sudo apt update", "sudo apt install memcached libmemcached-tools -y", "sudo systemctl enable memcached", "sudo systemctl start memcached", ("sudo systemctl status memcached")]. If you have 'Docker Desktop' installed on windows 11 (on your local machine using debug mode) the following steps can be taken to use 'memcache': [docker run -d --name memcached_local -p 11211:11211 memcached:latest]. This command can be used in 'Powershell'.
+
 - To start the virtual environment: python -m venv venvdjango1
 
 - To enable scripts (if necessary): Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
