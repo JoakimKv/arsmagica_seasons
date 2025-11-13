@@ -124,7 +124,10 @@ TEMPLATES = [
     },
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [BASE_DIR / "templates" / "jinja2"],
+        "DIRS": [
+            # Point directly at the app-level Jinja2 templates folder.
+            BASE_DIR / "arsmagica_seasons_app" / "templates" / "jinja2"
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             # The environment function lives at the project root as jinja2_environment.py

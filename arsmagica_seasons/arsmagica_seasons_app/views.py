@@ -277,3 +277,7 @@ def change_password(request):
         form = ChangePasswordForm()
 
     return render(request, "auth/change_password.html", {"form": form})
+
+def test_jinja2_page(request):
+
+    return render(request, "test/test_jinja2.html")
