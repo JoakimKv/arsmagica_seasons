@@ -1,0 +1,18 @@
+{% macro render_field(field, css_class="mb-3") %}
+
+<div class="{{ css_class }}">
+
+  {{ field.label_tag() | safe }}
+  {{ field }}
+
+  {% if field.errors %}
+
+  {% for error in field.errors %}
+  <div class="text-danger">{{ error }}</div>
+  {% endfor %}
+
+  {% endif %}
+
+</div>
+
+{% endmacro %}

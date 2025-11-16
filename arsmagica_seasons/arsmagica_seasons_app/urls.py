@@ -8,7 +8,6 @@ from .views import SeasonalWorkUpdateView, delete_seasonal_work
 
 urlpatterns = [
     path("", views.index, name = "index"),
-    path("test/", views.test_jinja2_page, name="test_jinja2_page"),
     path("login/", views.login_view, name = "login"),
     path("logout/", views.logout_view, name = "logout"),
     path("register/", views.register, name = "register"),

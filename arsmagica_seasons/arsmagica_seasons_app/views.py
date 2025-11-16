@@ -50,7 +50,7 @@ class SeasonalWorkUpdateView(UpdateView):
     
     model = SeasonalWork
     form_class = SeasonalWorkForm
-    template_name = "seasons/seasonal_work_form.html"
+    template_name = "seasons/seasonal_work_form_jinja2.html"
     context_object_name = "work"
 
     def form_valid(self, form):
@@ -111,7 +111,7 @@ def seasonal_work_create(request):
 
     return render(
         request,
-        "seasons/seasonal_work_form.html",
+        "seasons/seasonal_work_form_jinja2.html",
         {"form": form, "work": None}
     )
 
@@ -277,7 +277,3 @@ def change_password(request):
         form = ChangePasswordForm()
 
     return render(request, "auth/change_password.html", {"form": form})
-
-def test_jinja2_page(request):
-
-    return render(request, "test/test_jinja2.html")

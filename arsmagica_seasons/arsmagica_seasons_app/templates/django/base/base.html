@@ -24,13 +24,13 @@
 
       {% endif %}
 
+      <li><a href="{% url 'home' %}">Back to Start Page</a></li>
+
       {% if request.resolver_match.url_name != "index" %}
 
       <li><a href="{% url 'index' %}">ArsMagica</a></li>
 
       {% endif %}
-
-      <li><a href="{% url 'home' %}">Back to Start Page</a></li>
 
       {% if request.user.is_authenticated %}
 

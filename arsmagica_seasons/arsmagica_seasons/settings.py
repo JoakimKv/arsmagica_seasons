@@ -133,6 +133,13 @@ TEMPLATES = [
             # The environment function lives at the project root as jinja2_environment.py
             # Use the correct dotted path so Django can import it.
             "environment": "jinja2_environment.environment",
+            "context_processors": [
+               "django.template.context_processors.request",
+               "django.contrib.auth.context_processors.auth",
+               "django.contrib.messages.context_processors.messages",
+               "arsmagica_seasons_app.context_processors.blogs_url",
+               "arsmagica_seasons_app.context_processors.jinja2_csrf"
+            ],           
         },
     },
 ]

@@ -14,18 +14,18 @@
   </header>
 
   <nav>
+
     <ul>
 
       {% if request.user.is_authenticated %}
       <li><span>You are logged in as '{{ request.user.username }}'.</span></li>
       {% endif %}
 
-      {# Jinja2-Django supports request.resolver_match just like Django templates #}
+      <li><a href="{{ url('home') }}">Back to Start Page</a></li>
+
       {% if request.resolver_match.url_name != "index" %}
       <li><a href="{{ url('index') }}">ArsMagica</a></li>
       {% endif %}
-
-      <li><a href="{{ url('home') }}">Back to Start Page</a></li>
 
       {% if request.user.is_authenticated %}
 
@@ -52,6 +52,7 @@
       {% endif %}
 
     </ul>
+
   </nav>
 
   <section class="content">
