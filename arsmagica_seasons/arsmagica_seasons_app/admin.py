@@ -3,7 +3,7 @@
 
 
 from django.contrib import admin
-from .models import SeasonalWork
+from .pkg_models import SeasonalWork
 
 
 admin.site.register(SeasonalWork)

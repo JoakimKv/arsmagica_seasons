@@ -1,5 +1,5 @@
 
-# models.py
+# pkg_models/seasons_models.py
 
 
 from django.db import models
