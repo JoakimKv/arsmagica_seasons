@@ -308,3 +308,37 @@ try:
 except Exception:
     
     pass
+
+
+# Forces Django to print all errors on ubuntu server to container stdout so we can debug.
+
+try:
+
+    if secretVault.getIsOnServer():
+
+        LOGGING = {
+            "version": 1,
+            "disable_existing_loggers": False,
+            "handlers": {
+                "console": {
+                    "level": "DEBUG",
+                    "class": "logging.StreamHandler",
+                },
+            },
+            "loggers": {
+                "django": {
+                    "handlers": ["console"],
+                    "level": "DEBUG",
+                    "propagate": True,
+                },
+                "django.request": {
+                    "handlers": ["console"],
+                    "level": "DEBUG",
+                    "propagate": True,
+                },
+            },
+        }
+
+except Exception:
+    
+    pass
