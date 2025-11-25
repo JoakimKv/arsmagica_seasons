@@ -8,4 +8,4 @@ from .auth_forms import (
     ChangePasswordForm,
 )
 
-from .seasons_form import SeasonalWorkForm
+from .seasons_forms import SeasonalWorkForm
