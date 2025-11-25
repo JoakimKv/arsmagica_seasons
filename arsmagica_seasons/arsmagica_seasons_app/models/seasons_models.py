@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 
 class SeasonalWork(models.Model):
     
-    SEASON_CHOICES = [(s, s) for s in ["Summer", "Autumn", "Winter", "Spring"]]
-    CHARACTER_TYPE_CHOICES = [(s, s) for s in ["Magi", "Companion", "Other"]]
+    SEASON_CHOICES = [(s, s) for s in ["Summer", "Autumn", "Winter", "Spring", "Unknown"]]
+    CHARACTER_TYPE_CHOICES = [(s, s) for s in ["Hermetic Magus", "Vitki Magus", "Companion", "Other"]]
 
     name = models.CharField(max_length = 255)
     character_type = models.CharField(max_length = 12, choices = CHARACTER_TYPE_CHOICES)
@@ -26,6 +26,7 @@ class SeasonalWork(models.Model):
     def clean_summary(self):
 
         """Allow blank summary so we can fill it with GPT later."""
+        
         data = self.cleaned_data.get("summary")
 
         if data is None:
