@@ -1,10 +1,10 @@
 
-# pkg_utils/backup_utils.py
+# utils/backup_utils.py
 
 
 from django.contrib.auth.models import User
 from django.contrib import messages
-from ..pkg_models import SeasonalWork
+from ..models import SeasonalWork
 
 
 def backup_seasonal_work_to_test(work):

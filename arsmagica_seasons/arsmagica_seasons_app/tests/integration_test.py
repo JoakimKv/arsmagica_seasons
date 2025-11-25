@@ -4,10 +4,9 @@
 
 from django.test import SimpleTestCase, Client
 from django.contrib.auth.models import User
-from arsmagica_seasons_app.pkg_models import SeasonalWork
+from arsmagica_seasons_app.models import SeasonalWork
 from django.urls import reverse
 from django.db import connections
-from django.conf import settings
 
 
 class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):

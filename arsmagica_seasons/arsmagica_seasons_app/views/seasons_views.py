@@ -8,9 +8,9 @@ from django.db.models import Case, When, IntegerField
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 
-from ..pkg_models import SeasonalWork
-from ..pkg_forms import SeasonalWorkForm
-from ..pkg_utils import backup_seasonal_work_to_test
+from ..models import SeasonalWork
+from ..forms import SeasonalWorkForm
+from ..utils import backup_seasonal_work_to_test
 from ..gpthandler_class import GPTHandler
 
 

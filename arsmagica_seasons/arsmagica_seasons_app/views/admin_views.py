@@ -8,8 +8,8 @@ from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 
-from ..pkg_forms import ConfirmDeleteForm
-from ..pkg_utils import backup_user_and_work
+from ..forms import ConfirmDeleteForm
+from ..utils import backup_user_and_work
 
 
 def delete_user(request, user_id):

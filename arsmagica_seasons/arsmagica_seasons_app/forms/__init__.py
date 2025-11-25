@@ -1,5 +1,5 @@
 
-# pkg_forms/__init__.py
+# forms/__init__.py
 
 
 from .auth_forms import (
@@ -9,3 +9,11 @@ from .auth_forms import (
 )
 
 from .seasons_forms import SeasonalWorkForm
+
+
+__all__ = [
+  'CustomUserCreationForm',
+  'ConfirmDeleteForm',
+  'ChangePasswordForm',
+  'SeasonalWorkForm'
+]

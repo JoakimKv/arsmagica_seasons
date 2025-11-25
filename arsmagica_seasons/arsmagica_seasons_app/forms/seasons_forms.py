@@ -3,7 +3,7 @@
 
 
 from django import forms
-from ..pkg_models import SeasonalWork
+from ..models import SeasonalWork
 
 
 class SeasonalWorkForm(forms.ModelForm):
