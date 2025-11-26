@@ -118,12 +118,14 @@ def index(request):
             When(season = "Autumn", then = 2),
             When(season = "Winter", then = 3),
             When(season = "Spring", then = 4),
+            When(season = "Unknown", then = 5),
             output_field=IntegerField(),
         ),
         character_type_sort=Case(
-            When(character_type = "Magi", then = 1),
-            When(character_type = "Companion", then = 2),
-            When(character_type = "Other", then = 3),
+            When(character_type = "Hermetic Magus", then = 1),
+            When(character_type = "Vitki Magus", then = 2),
+            When(character_type = "Companion", then = 3),
+            When(character_type = "Other", then = 4),
             output_field=IntegerField(),
         )
     ).order_by("year", "season_sort", "name")
