@@ -12,9 +12,9 @@ class SeasonalWork(models.Model):
     CHARACTER_TYPE_CHOICES = [(s, s) for s in ["Hermetic Magus", "Vitki Magus", "Companion", "Other"]]
 
     name = models.CharField(max_length = 255)
-    character_type = models.CharField(max_length = 12, choices = CHARACTER_TYPE_CHOICES)
+    character_type = models.CharField(max_length = 64, choices = CHARACTER_TYPE_CHOICES)
     year = models.PositiveIntegerField()
-    season = models.CharField(max_length = 12, choices = SEASON_CHOICES)
+    season = models.CharField(max_length = 64, choices = SEASON_CHOICES)
     summary = models.CharField(max_length = 455, blank = True)
     description = models.TextField()
     time_created = models.DateTimeField(auto_now_add = True)
@@ -26,7 +26,7 @@ class SeasonalWork(models.Model):
     def clean_summary(self):
 
         """Allow blank summary so we can fill it with GPT later."""
-        
+
         data = self.cleaned_data.get("summary")
 
         if data is None:
