@@ -133,7 +133,7 @@ class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
         create_url = reverse("seasonal_work_create")
         data = {
             "name": "Potion Research",
-            "character_type": "Magi",
+            "character_type": "Hermetic Magus",
             "year": 1230,
             "season": "Winter",
             "summary": "",
@@ -208,7 +208,7 @@ class SeasonalWorkGPTRealIntegrationTest(SimpleTestCase):
         work = SeasonalWork.objects.using("testdb").create(
             user = self.user_testdb,
             name = "Forbidden Experiment",
-            character_type = "Magi",
+            character_type = "Hermetic Magus",
             year = 1232,
             season = "Summer",
             summary = "Original summary by rightful owner.",
