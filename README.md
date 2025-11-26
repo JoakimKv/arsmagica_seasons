@@ -81,6 +81,8 @@ On windows 11 (and an ubuntu server):
 
 - You can change password for the users that already are in the 'pre-created' database by using the following steps: ["cd arsmagica_seasons", "python manage.py shell", In this shell (">>>"): "from django.contrib.auth.hashers import make_password", "print(make_password("<your_password>"))"]. Then you copy this hashed password with HeidiSQL to the 'auth_user' table in the chosen user's password field and then update the table with the 'post' button command. Do this for the production and the test database.
 
+- An alternative solution to change password is: ["cd arsmagica_seasons", "python manage.py shell", In this shell (">>>"): "from django.contrib.auth.models import User", "u = User.objects.get(username='joakim')", "u.set_password('<your_password>')", "u.save()"].
+
 ## Environmental variables and secrets
 
 These secrets in your repository must be set (stored in your github repository):
