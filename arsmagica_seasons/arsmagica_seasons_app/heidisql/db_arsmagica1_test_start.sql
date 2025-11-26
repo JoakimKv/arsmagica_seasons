@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_arsmagica1_test.auth_permission: ~11 rows (approximately)
+-- Dumping data for table db_arsmagica1_test.auth_permission: ~32 rows (approximately)
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 	(85, 'Can add log entry', 22, 'add_logentry'),
 	(86, 'Can change log entry', 22, 'change_logentry'),
@@ -127,8 +127,8 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 
 -- Dumping data for table db_arsmagica1_test.auth_user: ~5 rows (approximately)
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-	(10, 'pbkdf2_sha256$1000000$zu6KyG2T6p9kjTt2oOJvjF$JZBaznYoq5qPmMBK/+HsjBRmD/Kwg+SPABIII7Kkyx0=', NULL, 1, 'admin', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:17:59.641648'),
-	(11, 'pbkdf2_sha256$1000000$4OG76NSTMxF90yRpNA5dOk$fmPkkg6dEe763eIg15fxTbIEOKS8jC5M3FikJudyrKc=', NULL, 1, 'joakim', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:18:47.692141'),
+	(10, 'pbkdf2_sha256$1000000$D0WJn4aNxvXmw6JEKjsguU$Nwv/0LyAkH2G5Sf8W6gTSAa2e4uO6tUQXwGExsaod/U=', NULL, 1, 'admin', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:17:59.641648'),
+	(11, 'pbkdf2_sha256$1000000$D0WJn4aNxvXmw6JEKjsguU$Nwv/0LyAkH2G5Sf8W6gTSAa2e4uO6tUQXwGExsaod/U=', NULL, 1, 'joakim', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:18:47.692141'),
 	(12, 'pbkdf2_sha256$1000000$PnBjbRBgzVjIKMxRB2rXvQ$/tzIW/VgJ2yx3fDskzmQFwXHbclsiWzlS2b+M07Dlqk=', '2025-10-16 00:43:55.346897', 0, 'kalle', '', '', 'kalle@hotmail.com', 0, 1, '2025-10-16 00:31:20.068509'),
 	(16, 'pbkdf2_sha256$1000000$OQft9fD7UIwXAyvHsEzyMJ$PVwIrb1wIDUm7/5Y8PestUbgAShKU0wZhyLJL9GP1Is=', NULL, 0, 'test_user_intruder', '', '', 'intruder@hotmail.com', 0, 1, '2025-10-16 01:27:10.689956'),
 	(28, 'pbkdf2_sha256$1000000$0gLhmsnzM8YMMIIymIkbAz$3VdVe8vspAOVCquUjj0yQpjGIM52iz1d9IoDDSwJdoU=', NULL, 0, 'test_user_gpt_real', '', '', 'test_user_gpt_real@hotmail.com', 0, 1, '2025-10-17 05:10:52.581530');
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_arsmagica1_test.django_content_type: ~7 rows (approximately)
+-- Dumping data for table db_arsmagica1_test.django_content_type: ~8 rows (approximately)
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 	(22, 'admin', 'logentry'),
 	(23, 'auth', 'permission'),
@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_arsmagica1_test.django_migrations: ~20 rows (approximately)
+-- Dumping data for table db_arsmagica1_test.django_migrations: ~23 rows (approximately)
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(1, 'contenttypes', '0001_initial', '2025-10-08 03:48:23.473430'),
 	(2, 'auth', '0001_initial', '2025-10-08 03:48:26.629827'),

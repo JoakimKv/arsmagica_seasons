@@ -79,6 +79,8 @@ On windows 11 (and an ubuntu server):
 
 - You will need to change the password (or delete and create the users again) by using HeidiSQL or a similar program for the superusers 'admin' and 'joakim' (you will also need to change the password for 'kalle' and / or remove him with his data by logging in as superuser 'joakim'). You will need to keep the superuser 'joakim' since he exists in many places in the code. Do not change the passwords for the test users (and do not delete the following test users): 'test_user_intruder' and 'test_user_gpt_real'. Their passwords are set in the code and should not be changed and you should not delete these users if you want to be able to run the tests in this project on your local machine.
 
+- You can change password for the users that already are in the 'pre-created' database by using the following steps: ["cd arsmagica_seasons", "python manage.py shell", In this shell (">>>"): "from django.contrib.auth.hashers import make_password", "print(make_password("<your_password>"))"]. Then you copy this hashed password with HeidiSQL to the 'auth_user' table in the chosen user's password field and then update the table with the 'post' button command. Do this for the production and the test database.
+
 ## Environmental variables and secrets
 
 These secrets in your repository must be set (stored in your github repository):
