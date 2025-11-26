@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Server version:               8.1.0 - MySQL Community Server - GPL
 -- Server OS:                    Linux
--- HeidiSQL Version:             12.12.0.7122
+-- HeidiSQL Version:             12.13.0.7147
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,9 +23,9 @@ USE `db_arsmagica1_test`;
 CREATE TABLE IF NOT EXISTS `arsmagica_seasons_app_seasonalwork` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `character_type` varchar(12) NOT NULL,
+  `character_type` varchar(64) NOT NULL,
   `year` int unsigned NOT NULL,
-  `season` varchar(12) NOT NULL,
+  `season` varchar(64) NOT NULL,
   `summary` varchar(455) NOT NULL,
   `description` longtext NOT NULL,
   `time_created` datetime(6) NOT NULL,
@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_arsmagica1_test.auth_permission: ~28 rows (approximately)
+-- Dumping data for table db_arsmagica1_test.auth_permission: ~11 rows (approximately)
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 	(85, 'Can add log entry', 22, 'add_logentry'),
 	(86, 'Can change log entry', 22, 'change_logentry'),
@@ -102,7 +102,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 	(109, 'Can add seasonal work', 28, 'add_seasonalwork'),
 	(110, 'Can change seasonal work', 28, 'change_seasonalwork'),
 	(111, 'Can delete seasonal work', 28, 'delete_seasonalwork'),
-	(112, 'Can view seasonal work', 28, 'view_seasonalwork');
+	(112, 'Can view seasonal work', 28, 'view_seasonalwork'),
+	(113, 'Can add history entry', 29, 'add_historyentry'),
+	(114, 'Can change history entry', 29, 'change_historyentry'),
+	(115, 'Can delete history entry', 29, 'delete_historyentry'),
+	(116, 'Can view history entry', 29, 'view_historyentry');
 
 -- Dumping structure for table db_arsmagica1_test.auth_user
 CREATE TABLE IF NOT EXISTS `auth_user` (
@@ -124,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 -- Dumping data for table db_arsmagica1_test.auth_user: ~5 rows (approximately)
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
 	(10, 'pbkdf2_sha256$1000000$zu6KyG2T6p9kjTt2oOJvjF$JZBaznYoq5qPmMBK/+HsjBRmD/Kwg+SPABIII7Kkyx0=', NULL, 1, 'admin', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:17:59.641648'),
-	(11, 'pbkdf2_sha256$1000000$wbai0srcNffCZ2ZLLUENXv$oOh4SL9AWzTtP5MFyNUWB42rtulS4Y7rGfbn2JpxxYQ=', NULL, 1, 'joakim', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:18:47.692141'),
+	(11, 'pbkdf2_sha256$1000000$4OG76NSTMxF90yRpNA5dOk$fmPkkg6dEe763eIg15fxTbIEOKS8jC5M3FikJudyrKc=', NULL, 1, 'joakim', '', '', 'joakim.kvistholm@gmail.com', 1, 1, '2025-10-16 00:18:47.692141'),
 	(12, 'pbkdf2_sha256$1000000$PnBjbRBgzVjIKMxRB2rXvQ$/tzIW/VgJ2yx3fDskzmQFwXHbclsiWzlS2b+M07Dlqk=', '2025-10-16 00:43:55.346897', 0, 'kalle', '', '', 'kalle@hotmail.com', 0, 1, '2025-10-16 00:31:20.068509'),
 	(16, 'pbkdf2_sha256$1000000$OQft9fD7UIwXAyvHsEzyMJ$PVwIrb1wIDUm7/5Y8PestUbgAShKU0wZhyLJL9GP1Is=', NULL, 0, 'test_user_intruder', '', '', 'intruder@hotmail.com', 0, 1, '2025-10-16 01:27:10.689956'),
 	(28, 'pbkdf2_sha256$1000000$0gLhmsnzM8YMMIIymIkbAz$3VdVe8vspAOVCquUjj0yQpjGIM52iz1d9IoDDSwJdoU=', NULL, 0, 'test_user_gpt_real', '', '', 'test_user_gpt_real@hotmail.com', 0, 1, '2025-10-17 05:10:52.581530');
@@ -157,6 +161,16 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 
 -- Dumping data for table db_arsmagica1_test.auth_user_user_permissions: ~0 rows (approximately)
 
+-- Dumping structure for table db_arsmagica1_test.debug_toolbar_historyentry
+CREATE TABLE IF NOT EXISTS `debug_toolbar_historyentry` (
+  `request_id` char(32) NOT NULL,
+  `data` json NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`request_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table db_arsmagica1_test.debug_toolbar_historyentry: ~0 rows (approximately)
+
 -- Dumping structure for table db_arsmagica1_test.django_admin_log
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -184,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table db_arsmagica1_test.django_content_type: ~7 rows (approximately)
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -194,7 +208,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 	(25, 'auth', 'user'),
 	(26, 'contenttypes', 'contenttype'),
 	(27, 'sessions', 'session'),
-	(28, 'arsmagica_seasons_app', 'seasonalwork');
+	(28, 'arsmagica_seasons_app', 'seasonalwork'),
+	(29, 'debug_toolbar', 'historyentry');
 
 -- Dumping structure for table db_arsmagica1_test.django_migrations
 CREATE TABLE IF NOT EXISTS `django_migrations` (
@@ -203,9 +218,9 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_arsmagica1_test.django_migrations: ~19 rows (approximately)
+-- Dumping data for table db_arsmagica1_test.django_migrations: ~20 rows (approximately)
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(1, 'contenttypes', '0001_initial', '2025-10-08 03:48:23.473430'),
 	(2, 'auth', '0001_initial', '2025-10-08 03:48:26.629827'),
@@ -226,7 +241,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(17, 'auth', '0011_update_proxy_permissions', '2025-10-08 03:48:28.801479'),
 	(18, 'auth', '0012_alter_user_first_name_max_length', '2025-10-08 03:48:29.010498'),
 	(19, 'sessions', '0001_initial', '2025-10-08 03:48:29.198900'),
-	(20, 'arsmagica_seasons_app', '0002_alter_seasonalwork_summary', '2025-10-13 01:08:25.019342');
+	(20, 'arsmagica_seasons_app', '0002_alter_seasonalwork_summary', '2025-10-13 01:08:25.019342'),
+	(21, 'arsmagica_seasons_app', '0003_alter_seasonalwork_character_type_and_more', '2025-11-26 00:30:45.359303'),
+	(22, 'debug_toolbar', '0001_initial', '2025-11-26 00:30:45.475406'),
+	(23, 'arsmagica_seasons_app', '0004_alter_seasonalwork_character_type_and_more', '2025-11-26 00:36:38.512157');
 
 -- Dumping structure for table db_arsmagica1_test.django_session
 CREATE TABLE IF NOT EXISTS `django_session` (
